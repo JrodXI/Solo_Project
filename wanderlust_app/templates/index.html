@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Wanderlust - Home</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-5">
+                <h1>Register</h1>
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <form action="/register" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input name="first_name" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input name="last_name" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input name="email" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input name="password" type="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input name="confirm_password" type="password">
+                    </div>
+                    <div class="form_group">
+                        <button class="btn btn-primary" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-5">
+                <h1>Log In</h1>
+                <form action="/login" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input name="email" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input name="password" type="password">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
